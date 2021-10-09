@@ -14,7 +14,7 @@ t_elem	*create_elem(long val)
 	return (elem);
 }
 
-t_elem	*init_stack(char **argv)
+long	init_stack(char **argv, t_elem **stack)
 {
 	long 	num;
 	long	i;
@@ -24,8 +24,6 @@ t_elem	*init_stack(char **argv)
 
 	i = 1;
 	num = ft_atoi(argv[i++]);
-	if (num < INT_MIN || num > INT_MAX)
-		ft_put_error();	
 	head = create_elem(num);
 	move = head;
 	while (argv[i])
@@ -33,26 +31,24 @@ t_elem	*init_stack(char **argv)
 		temp = move;
 		move = move->next;
 		num = ft_atoi(argv[i++]);
-		if (num < INT_MIN || num > INT_MAX)
-			ft_put_error();
 		move = create_elem(num);
 		move->prev = temp;
 		temp->next = move;
 	}
 	move->next = head;
 	head->prev = move;
-	return (head);
+	*stack = head;
+	return (i - 1);
 }
 
-t_env *init_env(long size)
+t_env *init_env()
 {
 	t_env *env;
 	
 	env = malloc(sizeof(*env));
 	if (env == NULL)
-		return (NULL);
-	env->a_size = size;
-	env->b_size = size;
-//	env->a_head;
+		ft_put_error();
+	env->a_size = 0;
+	env->b_size = 0;
 	return (env);
 }

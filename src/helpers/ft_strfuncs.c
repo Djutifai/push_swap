@@ -39,5 +39,7 @@ int	ft_atoi(char *str)
 	}
 	while (*str && *str >= '0' && *str <= '9')
 		i = i * 10 + (*str++ - '0');
+	if (!(i * minus >= INT_MIN && i * minus <= INT_MAX))
+		ft_put_error();
 	return (i * minus);
 }

@@ -12,14 +12,35 @@
 
 #include "push_swap.h"
 
+static void	push_rotate(t_env *env)
+{
+	int i;
+
+	i = 0;
+	while (i++ < 5)
+	{
+		if (env->a_head->val > env->b_head->val)
+			pa(env);
+		ra(&env->a_head, 1);
+	}
+}
+
 void	sort_five(t_env *env)
 {
 	if (env->a_size == 2)
 		sort_two(&env->a_head);
 	else if (env->a_size == 3)
 		sort_three(&env->a_head);
-	else if (env->a_size == 4)
+	else if (env->a_size > 3)
 	{
-		//pa();
+		pb(env);
+		printf("qwe\n");
+		if (env->a_size == 5)
+		{
+			pb(env);
+			sort_two(&env->b_head);
+		}
+		sort_three(&env->a_head);
+		push_rotate(env);
 	}
 }

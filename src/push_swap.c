@@ -17,31 +17,22 @@ int	main(int argc, char **argv)
 	t_env	*env;
 	t_elem	*elem;
 	t_elem	*move;
-	t_elem	*belem;
 
-	env = malloc(sizeof(*env));
 	args_checker(argc, argv);
-	//env = init_env();
-	elem = init_stack(argv);
+	env = init_env();
+	env->a_size = init_stack(argv, &elem);
+	t_elem *FORIGOR;
+	env->b_size = init_stack(argv, &FORIGOR);
 	env->a_head = elem;
-	belem = create_elem(55);
-	env->b_head = belem;
-	t_elem *temp = create_elem(10);
-	env->b_head->next = temp;
-	env->b_head->prev = temp;
-	temp->next = env->b_head;
-	temp->prev = env->b_head;
+	env->b_head = FORIGOR;
 	int i = 0;
-	env->a_size = 3;
-	env->b_size = 2;
-	sort_three(&env->a_head);
-	push_to_a(env);
-	push_to_b(env);
-	printf("value - %ld\n", env->a_head->val);
+	printf("HAHAH %ld\n", env->a_size);
+	//sort_five(env);
+	pa(env);
 	move = env->a_head;
 	while (i < env->a_size)
 	{
-		printf("%ld\n", move->val);
+		printf("%ld val\n", move->val);
 		move = move->next;
 		i++;
 	}

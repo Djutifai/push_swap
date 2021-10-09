@@ -33,7 +33,6 @@ void	args_checker(int argc, char **argv);
 int		ft_atoi(char *str);
 int		ft_isdigit(char *str);
 void	ft_put_error(void);
-
 void	sa(t_elem **stack);
 void	sb(t_elem **stack);
 void	swap_two(t_elem **stack);
@@ -48,6 +47,8 @@ void	rrb(t_elem **stack, int times);
 void	rotate(t_elem **stack, int is_reverse);
 void	sort_two(t_elem **stack);
 void	sort_three(t_elem **stack);
-t_elem	*init_stack(char **argv);
+void	sort_five(t_env *env);
+long	init_stack(char **argv, t_elem **stack);
+t_env	*init_env(void);
 
 #endif

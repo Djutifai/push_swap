@@ -1,4 +1,4 @@
-SRC			=  src/operations/actions.c src/sort/small_sorts.c\
+SRC			=  src/operations/actions.c src/sort/small_sorts.c src/sort/sort_five.c src/operations/pushes.c\
 		src/helpers/ft_strfuncs.c src/helpers/ft_help_funcs.c \
 			src/struct_functions/ft_struct_funcs.c src/push_swap.c src/operations/operations_a.c \
 			src/operations/operations_b.c src/operations/operations_ab.c 
