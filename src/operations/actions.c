@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:42:29 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/09 16:36:07 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/10/12 23:07:33 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,22 @@ void	rotate(t_elem **stack, int is_reverse)
 		*stack = (*stack)->next;
 	else
 		*stack = (*stack)->prev;
+}
+
+void	get_score(t_env *env)
+{
+	t_elem	*a_move;
+	t_elem	*b_move;
+	long	i;
+	long	j;
+	long	score;
+
+	i = 0;
+	j = 0;
+	while (j < env->b_size)
+	{
+		a_move = env->a_head;
+		b_move = env->b_head;
+		score = 0;
+	}
 }

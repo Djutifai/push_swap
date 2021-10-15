@@ -1,8 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_struct_funcs.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/10 21:36:36 by ftassada          #+#    #+#             */
+/*   Updated: 2021/10/15 22:22:13 by ftassada         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+static void	init_array(t_env *env)
+{
+	long	i;
+	t_elem	*mover;
+	long	swaps;
+
+	swaps = 0;
+	i = 0;
+	mover = env->a_head->next;
+	env->array = malloc(sizeof(*(env->array) * env->a_size));
+	if (env->array == NULL)
+		full_clear_err(&env);
+	while (mover != env->a_head)
+	{
+		env->array[i++] = mover->val;
+		mover = mover->next;
+	}
+	env->array[i] = mover->val;
+	sort_array(env, 0, env->a_size - 1, &swaps);
+	if (swaps == 0)
+		ft_exit();
+}
 
 t_elem	*create_elem(long val)
 {
-	t_elem *elem;
+	t_elem	*elem;
 
 	elem = malloc(sizeof(*elem));
 	if (elem == NULL)
@@ -14,13 +49,13 @@ t_elem	*create_elem(long val)
 	return (elem);
 }
 
-long	init_stack(char **argv, t_elem **stack)
+void	init_stack(char **argv, t_env *env)
 {
-	long 	num;
+	long	num;
 	long	i;
-	t_elem *head;
-	t_elem *move;
-	t_elem *temp;
+	t_elem	*head;
+	t_elem	*move;
+	t_elem	*temp;
 
 	i = 1;
 	num = ft_atoi(argv[i++]);
@@ -37,14 +72,15 @@ long	init_stack(char **argv, t_elem **stack)
 	}
 	move->next = head;
 	head->prev = move;
-	*stack = head;
-	return (i - 1);
+	env->a_head = head;
+	env->a_size = i - 1;
+	init_array(env);
 }
 
-t_env *init_env()
+t_env	*init_env(void)
 {
-	t_env *env;
-	
+	t_env	*env;
+
 	env = malloc(sizeof(*env));
 	if (env == NULL)
 		ft_put_error();

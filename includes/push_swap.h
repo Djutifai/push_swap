@@ -1,13 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/10 21:05:30 by ftassada          #+#    #+#             */
+/*   Updated: 2021/10/15 22:24:24 by ftassada         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-#include <stdio.h>
-typedef struct s_elem t_elem;
-typedef struct s_env t_env;
 
+typedef struct s_elem	t_elem;
+typedef struct s_env	t_env;
+typedef struct s_mmm	t_mmm;
+
+# define MAX_INT_DIGITS 10
 # define FALSE	0
 # define TRUE	1
 
@@ -15,8 +29,8 @@ struct s_elem
 {
 	long	val;
 	long	elem_score;
-	t_elem *prev;
-	t_elem *next;
+	t_elem	*prev;
+	t_elem	*next;
 };
 
 struct	s_env
@@ -25,6 +39,14 @@ struct	s_env
 	t_elem	*b_head;
 	long	a_size;
 	long	b_size;
+	long	*array;
+};
+
+struct s_mmm
+{
+	long	min;
+	long	mid;
+	long	max;
 };
 
 void	ft_putstr(char *str);
@@ -38,17 +60,30 @@ void	sb(t_elem **stack);
 void	swap_two(t_elem **stack);
 void	pa(t_env *env);
 void	push_to_a(t_env *env);
+void	push_to_small_a(t_env *env);
 void	pb(t_env *env);
 void	push_to_b(t_env *env);
+void	push_to_small_b(t_env *env);
 void	ra(t_elem **stack, int times);
 void	rra(t_elem **stack, int times);
 void	rb(t_elem **stack, int times);
 void	rrb(t_elem **stack, int times);
 void	rotate(t_elem **stack, int is_reverse);
-void	sort_two(t_elem **stack);
-void	sort_three(t_elem **stack);
-void	sort_five(t_env *env);
-long	init_stack(char **argv, t_elem **stack);
+void	sort_this(t_env *env);
+void	sort_two(t_elem **stack, int is_b);
+void	sort_three_a(t_elem **stack);
+void	sort_three_b(t_elem **stack);
+void	small_sort(t_env *env);
+void	sort_array(t_env *env, long low, long high, long *swaps);
+void	full_sort(t_env *env);
+void	full_clear(t_env **env);
+void	full_clear_err(t_env **env);
+void	init_stack(char **argv, t_env *env);
+void	init_stack_b(t_env *env, long min, long mid, long max);
 t_env	*init_env(void);
+t_mmm	init_mmm(t_env *env);
+void	make_scores(t_env *env);
+void	last_sort(t_env *env, t_elem *head);
+void	ft_exit(void);
 
 #endif
