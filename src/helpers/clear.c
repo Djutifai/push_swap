@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 19:17:23 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/15 22:44:22 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/10/16 16:37:19 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	full_clear(t_env **env)
 		mover = (*env)->a_head->next;
 	else
 		mover = (*env)->a_head;
-	while (mover != (*env)->a_head)
+	while (mover != (*env)->a_head && mover != NULL)
 	{
 		free_elem = mover;
 		mover = mover->next;
@@ -32,7 +32,7 @@ void	full_clear(t_env **env)
 	free((*env)->a_head);
 	free(*env);
 	*env = NULL;
-	ft_exit();
+	exit(0);
 }
 
 void	full_clear_err(t_env **env)
@@ -55,5 +55,6 @@ void	full_clear_err(t_env **env)
 	free((*env)->a_head);
 	free(*env);
 	free(env);
+	*env = NULL;
 	ft_put_error();
 }

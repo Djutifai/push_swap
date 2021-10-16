@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:04:52 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/15 22:11:07 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/10/16 13:34:55 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,24 @@ void	ft_put_error(void)
 
 int	ft_isdigit(char *str)
 {
-	while (*str == ' ')
+	int	minus_counter;
+	int	plus_counter;
+
+	minus_counter = 0;
+	plus_counter = 0;
+	while (ft_is_space(*str))
 		str++;
-	if (*str == '-')
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			minus_counter++;
+		else if (*str == '+')
+			plus_counter++;
 		str++;
+	}
+	if (minus_counter > 1 || plus_counter > 1 || \
+		(plus_counter == 1 && minus_counter == 1))
+		return (0);
 	while (*str && *str >= '0' && *str <= '9')
 		str++;
 	if (*str && !(*str >= '0' && *str <= '9'))
@@ -56,7 +70,9 @@ int	ft_atoi(char *str)
 	minus = 1;
 	while (ft_is_space(*str))
 		str++;
-	if (*str == '-')
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
 	{
 		minus = -1;
 		str++;
@@ -64,8 +80,7 @@ int	ft_atoi(char *str)
 	while (*str && *str >= '0' && *str <= '9')
 	{
 		i = i * 10 + (*str++ - '0');
-		digits++;
-		if (digits > MAX_INT_DIGITS)
+		if (++digits > MAX_INT_DIGITS)
 			ft_put_error();
 	}
 	if (!(i * minus >= INT_MIN && i * minus <= INT_MAX))

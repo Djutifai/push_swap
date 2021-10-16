@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:05:30 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/15 22:24:24 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/10/16 16:34:52 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ t_env	*init_env(void);
 t_mmm	init_mmm(t_env *env);
 void	make_scores(t_env *env);
 void	last_sort(t_env *env, t_elem *head);
-void	ft_exit(void);
 
 #endif

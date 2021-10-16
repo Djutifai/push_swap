@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:36:36 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/15 22:22:13 by ftassada         ###   ########.fr       */
+/*   Updated: 2021/10/16 16:34:43 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	init_array(t_env *env)
 	env->array[i] = mover->val;
 	sort_array(env, 0, env->a_size - 1, &swaps);
 	if (swaps == 0)
-		ft_exit();
+		exit(0);
 }
 
 t_elem	*create_elem(long val)
@@ -51,28 +51,29 @@ t_elem	*create_elem(long val)
 
 void	init_stack(char **argv, t_env *env)
 {
-	long	num;
 	long	i;
 	t_elem	*head;
 	t_elem	*move;
 	t_elem	*temp;
 
 	i = 1;
-	num = ft_atoi(argv[i++]);
-	head = create_elem(num);
+	head = create_elem(ft_atoi(argv[i++]));
+	env->a_head = head;
+	if (!head)
+		full_clear_err(&env);
 	move = head;
 	while (argv[i])
 	{
 		temp = move;
 		move = move->next;
-		num = ft_atoi(argv[i++]);
-		move = create_elem(num);
+		move = create_elem(ft_atoi(argv[i++]));
+		if (!move)
+			full_clear_err(&env);
 		move->prev = temp;
 		temp->next = move;
 	}
 	move->next = head;
 	head->prev = move;
-	env->a_head = head;
 	env->a_size = i - 1;
 	init_array(env);
 }
