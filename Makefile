@@ -18,7 +18,7 @@ CFLAGS		= -Wall -Werror -Wextra
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(INCLUDES)push_swap.h Makefile
+$(NAME):	${SRC} ${OBJ} $(INCLUDES)push_swap.h Makefile
 			${CC} ${CFLAGS} ${OBJ} -o $(NAME)
 
 clean:
