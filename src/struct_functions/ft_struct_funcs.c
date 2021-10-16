@@ -21,7 +21,7 @@ static void	init_array(t_env *env)
 	swaps = 0;
 	i = 0;
 	mover = env->a_head->next;
-	env->array = malloc(sizeof(*(env->array) * env->a_size));
+	env->array = malloc(sizeof(*(env->array)) * env->a_size);
 	if (env->array == NULL)
 		full_clear_err(&env);
 	while (mover != env->a_head)

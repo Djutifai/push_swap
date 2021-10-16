@@ -5,8 +5,6 @@ SRC			= src/helpers/clear.c  src/sort/scoring.c src/sort/full_sort_helpers.c \
 				src/push_swap.c src/operations/operations_a.c src/operations/operations_b.c \
 				src/operations/operations_ab.c
 
-
-
 OBJ			= ${SRC:.c=.o}
 
 INCLUDES	= includes/
