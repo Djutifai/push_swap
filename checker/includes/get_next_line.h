@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 01:42:02 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/16 17:36:35 by ftassada         ###   ########.fr       */
+/*   Created: 2021/04/23 01:12:30 by ftassada          #+#    #+#             */
+/*   Updated: 2021/06/05 19:40:10 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int argc, char **argv)
-{
-	t_env	*env;
+# include <unistd.h>
+# include <stdlib.h>
 
-	args_checker(argc, argv);
-	env = init_env();
-	init_stack(argv, env);
-	sort_this(env);
-	full_clear(&env);
-}
+int		get_next_line(int fd, char **line);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strtrunc(char *str, char c);
+char	*ft_strchr(const char *s, int c);
+
+#endif

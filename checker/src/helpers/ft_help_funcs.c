@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_help_funcs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/09 01:42:02 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/16 17:36:35 by ftassada         ###   ########.fr       */
+/*   Created: 2021/10/09 01:42:31 by ftassada          #+#    #+#             */
+/*   Updated: 2021/10/16 17:40:31 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int argc, char **argv)
+void	args_checker(int argc, char **argv)
 {
-	t_env	*env;
+	size_t	i;
+	size_t	beginning;
+	size_t	mover;
 
-	args_checker(argc, argv);
-	env = init_env();
-	init_stack(argv, env);
-	sort_this(env);
-	full_clear(&env);
+	i = 1;
+	mover = 1;
+	if (argc == 1)
+		exit(0);
+	while (argv[i])
+		if (!ft_isdigit(argv[i++]))
+			ft_put_error();
+	while (mover < i)
+	{
+		beginning = 1;
+		while (beginning < mover)
+			if (ft_atoi(argv[beginning++]) == ft_atoi(argv[mover]))
+				ft_put_error();
+		mover++;
+	}
 }
