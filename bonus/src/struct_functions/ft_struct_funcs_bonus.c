@@ -6,13 +6,13 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:36:36 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/15 16:39:45 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/25 21:09:24 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static void	init_array(t_env *env)
+void	init_array(t_env *env)
 {
 	long	i;
 	t_elem	*mover;

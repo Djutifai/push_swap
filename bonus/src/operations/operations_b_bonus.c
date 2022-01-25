@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:59:56 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/15 16:39:09 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/15 23:38:53 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	sb(t_elem **elem)
 {
-	ft_putstr("sb\n");
 	swap_two(elem);
 }
 
 void	pb(t_env *env)
 {
-	ft_putstr("pb\n");
 	if (env->a_head == NULL)
 		return ;
 	if (env->b_size > 1)
@@ -35,10 +33,7 @@ void	rb(t_elem **stack, int times)
 
 	i = 0;
 	while (i++ < times)
-	{
-		ft_putstr("rb\n");
 		rotate(stack, FALSE);
-	}
 }
 
 void	rrb(t_elem **stack, int times)
@@ -47,8 +42,5 @@ void	rrb(t_elem **stack, int times)
 
 	i = 0;
 	while (i++ < times)
-	{
-		ft_putstr("rrb\n");
 		rotate(stack, TRUE);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/10 21:05:30 by ftassada          #+#    #+#             */
-/*   Updated: 2021/10/16 16:34:52 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/25 21:22:59 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ struct s_mmm
 void	ft_putstr(char *str);
 t_elem	*create_elem(long val);
 void	args_checker(int argc, char **argv);
+int		check_for_doubles_helper(int *nums, int amount_of_nums);
+long	*nums_builder(char *str, int amount_of_nums);
 int		ft_atoi(char *str);
 int		ft_isdigit(char *str);
 void	ft_put_error(void);
@@ -82,6 +84,8 @@ void	full_sort(t_env *env);
 void	full_clear(t_env **env);
 void	full_clear_err(t_env **env);
 void	init_stack(char **argv, t_env *env);
+void	init_array(t_env *env);
+t_env	*init_single_arg(char *arg);
 void	init_stack_b(t_env *env, long min, long mid, long max);
 t_env	*init_env(void);
 t_mmm	init_mmm(t_env *env);

@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:42:27 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/15 16:39:05 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/15 20:51:36 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 void	sa(t_elem **elem)
 {
-	ft_putstr("sa\n");
 	swap_two(elem);
 }
 
 void	pa(t_env *env)
 {
-	ft_putstr("pa\n");
 	if (env->b_head == NULL)
 		return ;
 	if (env->a_size > 1)
@@ -35,10 +33,7 @@ void	ra(t_elem **stack, int times)
 
 	i = 0;
 	while (i++ < times)
-	{
-		ft_putstr("ra\n");
 		rotate(stack, FALSE);
-	}
 }
 
 void	rra(t_elem **stack, int times)
@@ -47,8 +42,5 @@ void	rra(t_elem **stack, int times)
 
 	i = 0;
 	while (i++ < times)
-	{
-		ft_putstr("rra\n");
 		rotate(stack, TRUE);
-	}
 }

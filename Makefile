@@ -1,9 +1,6 @@
-SRC			= src/helpers/clear.c  src/sort/scoring.c src/sort/full_sort_helpers.c \
-				src/sort/full_sort.c src/operations/actions.c src/sort/small_sorts.c \
-				src/sort/small_sort.c src/operations/pushes.c src/helpers/ft_strfuncs.c \
-				src/helpers/ft_help_funcs.c src/sort/sorts.c src/struct_functions/ft_struct_funcs.c \
-				src/push_swap.c src/operations/operations_a.c src/operations/operations_b.c \
-				src/operations/operations_ab.c
+SRC_DIR		= src/
+
+SRC			= $(shell find ${SRC_DIR} -type f -name "*.c")
 
 OBJ			= ${SRC:.c=.o}
 
@@ -38,7 +35,7 @@ bonus:		${NAME_BON}
 
 ${NAME_BON}:${SRC_BON} ${OBJ_BON} ${INCLUDE_BON}push_swap_bonus.h Makefile
 			${CC} ${CFLAGS} ${OBJ_BON} -o ${NAME_BON}
-			
+
 clean:
 			$(RM) $(OBJ) ${OBJ_BON}
 
