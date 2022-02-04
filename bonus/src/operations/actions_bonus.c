@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:42:29 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/15 20:51:28 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/29 14:25:49 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap_two(t_elem **stack)
 {
 	long	temp;
 
-	if ((*stack)->next == NULL)
+	if (!*stack || (*stack)->next == NULL)
 		return ;
 	temp = (*stack)->val;
 	(*stack)->val = (*stack)->next->val;
@@ -25,6 +25,9 @@ void	swap_two(t_elem **stack)
 
 void	rotate(t_elem **stack, int is_reverse)
 {
+
+	if (!*stack || (*stack)->next == NULL)
+		return ;
 	if (is_reverse == FALSE)
 		*stack = (*stack)->next;
 	else

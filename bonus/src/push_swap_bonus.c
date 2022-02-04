@@ -6,7 +6,7 @@
 /*   By: ftassada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:42:02 by ftassada          #+#    #+#             */
-/*   Updated: 2022/01/25 21:17:56 by ftassada         ###   ########.fr       */
+/*   Updated: 2022/01/29 14:26:47 by ftassada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,11 @@ static int	do_instruction(char *str, t_env *env)
 		sa(&env->a_head);
 	else if (ft_strcmp(str, "sb"))
 		sb(&env->b_head);
+	else if (ft_strcmp(str, "ss"))
+		ss(env);
 	else if (ft_strcmp(str, "rr"))
 		rr(env, 1);
-	else if (ft_strcmp(str, "rrr\n"))
+	else if (ft_strcmp(str, "rrr"))
 		rrr(env, 1);
 	else
 		return (0);
